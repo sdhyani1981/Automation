@@ -54,7 +54,7 @@ public class BlackListHooks {
 		RestAssured.baseURI = BASE_URL;
 		RequestSpecification request = RestAssured.given();
 		Response response = request.log().all().delete(TS_URI + "/" + id);
-		Assert.assertEquals("Failed to Delete test data", 200, response.getStatusCode());
+		Assert.assertEquals("Failed to Delete Auth test data", 200, response.getStatusCode());
 	
 	}
 
@@ -64,7 +64,7 @@ public class BlackListHooks {
 		RestAssured.baseURI = BASE_URL;
 		RequestSpecification request = RestAssured.given();
 		Response response = request.log().all().delete(BL_URI + "/" + id);
-		Assert.assertEquals("Failed to Delete test data", 200, response.getStatusCode());	
+		Assert.assertEquals("Failed to Delete User test data", 200, response.getStatusCode());	
 	}
 
 }
