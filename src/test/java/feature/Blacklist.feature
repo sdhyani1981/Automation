@@ -11,18 +11,18 @@ Feature: Blacklist
       | retF34$$evbzZ | email        | obama@gmail.com | bl_email |
       | retF34$$evbzZ | name         | Barak Obama     | bl_name  |
       | retF34$$evbzZ | phone        |      3104211111 | bl_phone |
-#
-  #@blacklist
-  #Scenario Outline: A Fraud analyst with an in-valid auth, is denied to add blacklisted info to the Company blacklist
-    #Given I am a fraud analyst with auth-id '<token>'
-    #When I add '<userinfotype>', '<info>' in the company blacklist
-    #Then Permission is denied
-#
-    #Examples: 
-      #| token        | userinfotype | info                |
-      #| opqG841evbcC | email        | frauduser@gmail.com |
-      #| opqG841evbcC | name         | Bin Laden           |
-      #| opqG841evbcC | phone        |          3104200000 |
+
+  @blacklist
+  Scenario Outline: A Fraud analyst with an in-valid auth, is denied to add blacklisted info to the Company blacklist
+    Given I am a fraud analyst with auth token '<token>'
+    When I add '<userinfotype>', '<info>' in the company blacklist
+    Then Permission is denied
+
+    Examples: 
+      | token        | userinfotype | info                |
+      | opqG841evbcC | email        | donthaveauth@gmail.com|
+      | opqG841evbcC | name         | Do not have auth    |
+      | opqG841evbcC | phone        |          1110001111 |
 
 	@blacklist @bl_check
   Scenario Outline: If a new customer tries to sign up and he is in the company blacklist then deny sign-up with appropriate blacklist codes.
@@ -46,6 +46,6 @@ Feature: Blacklist
 
     Examples: 
       | userinfotype | info            | code       |
-      | email        | obama@gmail.com | bl_approve |
-      | name         | Barak Obama     | bl_approve |
+      | email        | approved@gmail.com | bl_approve |
+      | name         | User Approved     | bl_approve |
       | phone        |      3101111111 | bl_approve |

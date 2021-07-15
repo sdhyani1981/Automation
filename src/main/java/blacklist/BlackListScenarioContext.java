@@ -7,6 +7,7 @@ public class BlackListScenarioContext {
 	int httpCode;
 	Integer blackListItemId;
 	Integer analystId;
+	private boolean permission=true;
 
 	public Integer getBlackListItemId() {
 		return blackListItemId;
@@ -62,6 +63,14 @@ public class BlackListScenarioContext {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+	
+	public boolean getPermission() {
+		return this.permission;
+		
+	}
+	public void setPermission(boolean permission) {
+		this.permission = permission;
 	}
 
 }

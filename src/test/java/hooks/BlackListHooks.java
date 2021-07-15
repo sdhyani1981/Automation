@@ -1,7 +1,5 @@
 package hooks;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -25,10 +23,9 @@ public class BlackListHooks {
 
 	static {
 		try {
+			ClassLoader cLoader = BlackListHooks.class.getClassLoader();
 			properties = new Properties();
-			File file = new File(
-					"//Users//shivanidhyani//eclipse-workspace//Automation//src//main//java//config//blacklist.properties");
-			InputStream inputStream = new FileInputStream(file);
+			InputStream inputStream = cLoader.getResourceAsStream("blacklist.properties");
 			properties.load(inputStream);
 			BASE_URL = properties.getProperty("BASE_URL");
 			BL_URI = properties.getProperty("BL_URI");
